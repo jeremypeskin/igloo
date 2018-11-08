@@ -26,6 +26,15 @@
   margin-top: 20px;
 }
 
+.mdl-layout-title {
+  color: white;
+  text-decoration: none;
+}
+
+.mdl-card__supporting-text + .mdl-card__actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 //Flash notifications
 .notice {
   color: green;
