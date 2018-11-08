@@ -15,6 +15,7 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit = Unit.new
+    @properties = current_user.properties
   end
 
   # GET /units/1/edit
@@ -25,6 +26,7 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
+    @unit.user_id = current_user
 
     respond_to do |format|
       if @unit.save
