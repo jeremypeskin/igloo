@@ -1,14 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @unit.name %>
-</p>
+<div class="resource-header mdl-grid section--center mdl-shadow--2dp mdl-color--white">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__supporting-text">
+      <h4><%= @unit.name %></h4>
+      <p>
+        <strong>Property:</strong>
+        <%= @unit.property.address %>
+      </p>
+      <p>
+        <strong>Rent:</strong>
+        <%= @unit.rent %>
+      </p>
+    </div>
+    <div class="mdl-card__actions">
+      <%= link_to 'Edit', edit_unit_path(@unit), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+      <%= link_to 'Back', units_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Rent:</strong>
-  <%= @unit.rent %>
-</p>
-
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %>
+<div class="cards-container">
+  <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Expense</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @unit.expenses.each do |expense| %>
+          <td class="mdl-data-table__cell--non-numeric"><%= expense.description %></td>
+          <td> <%= expense.amount %> </td>
+          <td> <%= expense.date %> </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

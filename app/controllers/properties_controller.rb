@@ -27,7 +27,7 @@ class PropertiesController < ApplicationController
   # POST /properties.json
   def create
     @property = Property.new(property_params)
-    @property.user_id = current_user.id
+    @property.user_id = current_user
 
     respond_to do |format|
       if @property.save

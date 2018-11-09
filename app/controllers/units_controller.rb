@@ -26,7 +26,7 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
-    @unit.user_id = current_user
+    @unit.user_id = current_user.id
 
     respond_to do |format|
       if @unit.save
