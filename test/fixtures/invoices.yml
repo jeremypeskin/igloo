@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  amount: 1
+  date: 2018-11-11
+  status: 1
+  unit_id: MyString
+  property_id: MyString
+  user_id: MyString
+
+two:
+  description: MyString
+  amount: 1
+  date: 2018-11-11
+  status: 1
+  unit_id: MyString
+  property_id: MyString
+  user_id: MyString

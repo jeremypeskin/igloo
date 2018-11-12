@@ -20,28 +20,62 @@
   </div>
 </div>
 
-<div class="cards-container">
-  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-    <thead>
-      <tr>
-        <th class="mdl-data-table__cell--non-numeric">Expense</th>
-        <th>Amount</th>
-        <th>Date</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <% @unit.expenses.each do |expense| %>
-          <td class="mdl-data-table__cell--non-numeric"><%= expense.description %></td>
-          <td> <%= expense.amount %> </td>
-          <td> <%= expense.date %> </td>
-          <td>
-            <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_expense_path(expense), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
-            <%= link_to '<i class="material-icons">delete</i>'.html_safe, expense, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
-          </td>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="cards-container">
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Expense</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @unit.expenses.each do |expense| %>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric"><%= expense.description %></td>
+              <td> <%= expense.amount %> </td>
+              <td> <%= expense.date %> </td>
+              <td>
+                <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_expense_path(expense), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
+                <%= link_to '<i class="material-icons">delete</i>'.html_safe, expense, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mdl-cell mdl-cell--6-col">
+    <div class="cards-container">
+      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Invoice</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @unit.invoices.each do |invoice| %>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric"><%= invoice.description %></td>
+                <td> <%= invoice.amount %> </td>
+                <td> <%= invoice.date %> </td>
+                <td> <%= invoice.status %> </td>
+                <td>
+                  <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_invoice_path(invoice), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
+                  <%= link_to '<i class="material-icons">delete</i>'.html_safe, invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

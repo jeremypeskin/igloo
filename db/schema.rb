@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181109014326) do
+ActiveRecord::Schema.define(version: 20181112011737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 20181109014326) do
   add_index "expenses", ["property_id"], name: "index_expenses_on_property_id", using: :btree
   add_index "expenses", ["unit_id"], name: "index_expenses_on_unit_id", using: :btree
   add_index "expenses", ["user_id"], name: "index_expenses_on_user_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "property_id"
+    t.integer  "unit_id"
+    t.string   "description"
+    t.integer  "amount"
+    t.date     "date"
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "invoices", ["property_id"], name: "index_invoices_on_property_id", using: :btree
+  add_index "invoices", ["unit_id"], name: "index_invoices_on_unit_id", using: :btree
+  add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
     t.integer  "user_id"

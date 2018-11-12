@@ -1,0 +1,57 @@
+<%= form_for(@invoice) do |f| %>
+  <% if @invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% @invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :description, :class=>"mdl-textfield__label" %>
+    <%= f.text_field :description, :class=>"mdl-textfield__input", required:true, autofocus:true %>
+  </div><br />
+  <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.label :amount, :class=>"mdl-textfield__label" %>
+    <%= f.number_field :amount, :class=>"mdl-textfield__input" %>
+  </div><br />
+  <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.text_field :date, :type=>"date", :value => Time.now.strftime('%Y-%m-%d'), :class=>"mdl-textfield__input" %>
+  </div><br />
+
+  <div class="select-container">
+    <div class="select">
+      <select name="invoice[status]" id="invoice_unit_id" class="select-text" required>
+        <option value="" disabled selected></option>
+        <% Invoice.statuses.each do |status| %>
+        <%= "<option value='#{status[0]}'>#{status[0]}</option>".html_safe %>
+        <% end %>
+      </select>
+      <span class="select-highlight"></span>
+      <span class="select-bar"></span>
+      <label class="select-label">Select</label>
+    </div>
+  </div><br />
+
+  <div class="select-container">
+    <div class="select">
+      <select name="invoice[unit_id]" id="invoice_unit_id" class="select-text" required>
+        <option value="" disabled selected></option>
+        <% @units.each do |unit| %>
+        <%= "<option value='#{unit.id}'>#{unit.name}</option>".html_safe %>
+        <% end %>
+      </select>
+      <span class="select-highlight"></span>
+      <span class="select-bar"></span>
+      <label class="select-label">Select</label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+  </div>
+<% end %>
