@@ -21,12 +21,13 @@
 </div>
 
 <div class="cards-container">
-  <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
     <thead>
       <tr>
         <th class="mdl-data-table__cell--non-numeric">Expense</th>
         <th>Amount</th>
         <th>Date</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +36,10 @@
           <td class="mdl-data-table__cell--non-numeric"><%= expense.description %></td>
           <td> <%= expense.amount %> </td>
           <td> <%= expense.date %> </td>
+          <td>
+            <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_expense_path(expense), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
+            <%= link_to '<i class="material-icons">delete</i>'.html_safe, expense, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
+          </td>
         <% end %>
       </tr>
     </tbody>

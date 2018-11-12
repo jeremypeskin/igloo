@@ -20,6 +20,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/1/edit
   def edit
+    @units = current_user.units
   end
 
   # POST /expenses

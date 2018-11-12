@@ -1,5 +1,5 @@
 class Expense < ActiveRecord::Base
-  has_one :unit
-  has_one :property
-  has_one :user
+  belongs_to :unit
+  belongs_to :property
+  belongs_to :user
 end

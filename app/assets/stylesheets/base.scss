@@ -27,12 +27,21 @@
 }
 
 .mdl-layout-title {
-  color: white;
   text-decoration: none;
+}
+
+.demo-card-event.mdl-card {
+  margin-bottom: 20px;
 }
 
 .mdl-card__supporting-text + .mdl-card__actions {
   border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mdl-button--mini-fab.xs {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
 }
 
 //Flash notifications

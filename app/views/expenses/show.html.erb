@@ -1,19 +1,27 @@
 <p id="notice"><%= notice %></p>
+<div class="resource-header mdl-grid section--center mdl-shadow--2dp mdl-color--white">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__supporting-text">
 
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @expense.description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @expense.date %>
-</p>
-
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+      <h4>
+        <%= @expense.description %>
+      </h4>
+      <p>
+        <strong>Amount:</strong>
+        $<%= @expense.amount %>
+      </p>
+      <p>
+        <strong>Date:</strong>
+        <%= @expense.date %>
+      </p>
+      <p>
+        <strong>Unit:</strong>
+        <%= @expense.unit.name %>
+      </p>
+    </div>
+    <div class="mdl-card__actions">
+      <%= link_to 'Edit', edit_expense_path(@expense), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+      <%= link_to 'Back', expenses_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+    </div>
+  </div>
+</div>

@@ -12,7 +12,7 @@
     <header class="mdl-layout__header">
       <div class="mdl-layout__header-row">
 
-        <%= link_to('Igloo', properties_path, :class=>"mdl-layout-title") %>
+        <%= link_to('Igloo', properties_path, :class=>"mdl-layout-title mdl-color-text--white") %>
 
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation">
@@ -26,6 +26,7 @@
                 for="demo-menu-lower-right">
               <%= link_to 'Property', new_property_path, :class=>"mdl-menu__item" %>
               <%= link_to 'Unit', new_unit_path, :class=>"mdl-menu__item" %>
+              <%= link_to 'Expense', new_expense_path, :class=>"mdl-menu__item" %>
             </ul>
             <%= link_to('LOGOUT', destroy_user_session_path, method: :delete, :class=>"mdl-navigation__link") %>
           <% else %>
@@ -34,6 +35,15 @@
         </nav>
       </div>
     </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Igloo</span>
+      <nav class="mdl-navigation">
+        <%= link_to 'Properties', properties_path, :class=>"mdl-navigation__link" %>
+        <%= link_to 'Units', units_path, :class=>"mdl-navigation__link" %>
+        <%= link_to 'Expenses', expenses_path, :class=>"mdl-navigation__link" %>
+      </nav>
+    </div>
+
     <main class="mdl-layout__content">
       <div class="page-content">
         <%= yield %>

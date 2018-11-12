@@ -1,6 +1,12 @@
-<h1>Editing Expense</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @expense %> |
-<%= link_to 'Back', expenses_path %>
+<div class="resource-header mdl-grid section--center mdl-shadow--2dp mdl-color--white">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__supporting-text">
+      <h4>Edit Expense</h4>
+      <%= render 'form' %>
+    </div>
+    <div class="mdl-card__actions">
+      <%= link_to 'Show', @expense, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+      <%= link_to 'Back', :back, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+    </div>
+  </div>
+</div>
