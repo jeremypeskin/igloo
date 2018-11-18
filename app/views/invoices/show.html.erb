@@ -1,39 +1,34 @@
 <p id="notice"><%= notice %></p>
+<div class="resource-header mdl-grid section--center mdl-shadow--2dp mdl-color--white">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__supporting-text">
+      <h4>
+        <%= @invoice.description %>
+      </h4>
 
-<p>
-  <strong>Description:</strong>
-  <%= @invoice.description %>
-</p>
+      <p>
+        <strong>Amount:</strong>
+        <%= @invoice.amount %>
+      </p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @invoice.amount %>
-</p>
+      <p>
+        <strong>Date:</strong>
+        <%= @invoice.date %>
+      </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @invoice.date %>
-</p>
+      <p>
+        <strong>Status:</strong>
+        <%= @invoice.status %>
+      </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @invoice.status %>
-</p>
-
-<p>
-  <strong>Unit:</strong>
-  <%= @invoice.unit_id %>
-</p>
-
-<p>
-  <strong>Property:</strong>
-  <%= @invoice.property_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @invoice.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+      <p>
+        <strong>Unit:</strong>
+        <%= @invoice.unit_id %>
+      </p>
+    </div>
+    <div class="mdl-card__actions">
+      <%= link_to 'Edit', edit_invoice_path(@invoice), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+      <%= link_to 'Back', invoices_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+    </div>
+  </div>
+</div>

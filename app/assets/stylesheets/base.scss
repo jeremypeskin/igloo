@@ -30,8 +30,16 @@
   text-decoration: none;
 }
 
+.mdl-card__title {
+  position: relative;
+}
+
 .demo-card-event.mdl-card {
   margin-bottom: 20px;
+}
+
+.demo-card-event .mdl-card__actions {
+  background: #3E4EB8;
 }
 
 .mdl-card__supporting-text + .mdl-card__actions {
@@ -42,6 +50,28 @@
   width: 30px;
   height: 30px;
   min-width: 30px;
+}
+
+@mixin resource_card($resource) {
+  background-image: url($resource);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  opacity: .2;
+}
+
+.unit_card {
+  @include resource_card('unit.jpg')
+}
+
+.property_card {
+  @include resource_card('property.jpg')
 }
 
 //Flash notifications

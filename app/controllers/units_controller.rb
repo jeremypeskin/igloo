@@ -20,6 +20,7 @@ class UnitsController < ApplicationController
 
   # GET /units/1/edit
   def edit
+    @properties = current_user.properties
   end
 
   # POST /units

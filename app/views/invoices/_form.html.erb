@@ -25,7 +25,7 @@
 
   <div class="select-container">
     <div class="select">
-      <select name="invoice[status]" id="invoice_unit_id" class="select-text" required>
+      <select name="invoice[status]" id="invoice_unit_id" class="select-text">
         <option value="" disabled selected></option>
         <% Invoice.statuses.each do |status| %>
         <%= "<option value='#{status[0]}'>#{status[0]}</option>".html_safe %>
