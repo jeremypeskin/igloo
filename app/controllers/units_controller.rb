@@ -1,5 +1,6 @@
 class UnitsController < ApplicationController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :find_user
 
   # GET /units
   # GET /units.json
@@ -27,7 +28,7 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
-    @unit.user_id = @user.id
+    @unit.user_id = current_user.id
 
     respond_to do |format|
       if @unit.save
@@ -73,5 +74,9 @@ class UnitsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
       params.require(:unit).permit(:name, :rent, :property_id)
+    end
+
+    def find_user
+      @user = current_user
     end
 end
