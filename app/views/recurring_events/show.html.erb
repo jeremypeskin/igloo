@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<div class="resource-header mdl-grid section--center mdl-shadow--2dp mdl-color--white">
+  <div class="mdl-card mdl-cell mdl-cell--12-col">
+    <div class="mdl-card__supporting-text">
+      <h4>
+        <%= @recurring_event.description %>
+      </h4>
+      <p>
+        <strong>Amount:</strong>
+        <%= @recurring_event.amount %>
+      </p>
+
+      <p>
+        <strong>Category:</strong>
+        <%= @recurring_event.category %>
+      </p>
+
+      <div class="mdl-card__actions">
+        <%= link_to 'Edit', edit_recurring_event_path(@recurring_event), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+        <%= link_to 'Back', recurring_events_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect" %>
+      </div>

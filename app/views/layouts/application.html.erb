@@ -28,6 +28,7 @@
               <%= link_to 'Unit', new_unit_path, :class=>"mdl-menu__item" %>
               <%= link_to 'Expense', new_expense_path, :class=>"mdl-menu__item" %>
               <%= link_to 'Invoice', new_invoice_path, :class=>"mdl-menu__item" %>
+              <%= link_to 'Recurring Event', new_recurring_event_path, :class=>"mdl-menu__item" %>
             </ul>
             <%= link_to('LOGOUT', destroy_user_session_path, method: :delete, :class=>"mdl-navigation__link") %>
           <% else %>
@@ -43,6 +44,7 @@
         <%= link_to 'Units', units_path, :class=>"mdl-navigation__link" %>
         <%= link_to 'Expenses', expenses_path, :class=>"mdl-navigation__link" %>
         <%= link_to 'Invoices', invoices_path, :class=>"mdl-navigation__link" %>
+        <%= link_to 'Recurring Events', recurring_events_path, :class=>"mdl-navigation__link" %>
       </nav>
     </div>
 

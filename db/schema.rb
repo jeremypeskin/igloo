@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181112011737) do
+ActiveRecord::Schema.define(version: 20181118211749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,21 @@ ActiveRecord::Schema.define(version: 20181112011737) do
   end
 
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
+
+  create_table "recurring_events", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "property_id"
+    t.integer  "unit_id"
+    t.integer  "amount"
+    t.string   "description"
+    t.integer  "category"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "recurring_events", ["property_id"], name: "index_recurring_events_on_property_id", using: :btree
+  add_index "recurring_events", ["unit_id"], name: "index_recurring_events_on_unit_id", using: :btree
+  add_index "recurring_events", ["user_id"], name: "index_recurring_events_on_user_id", using: :btree
 
   create_table "units", force: :cascade do |t|
     t.integer  "user_id"
