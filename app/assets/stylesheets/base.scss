@@ -53,7 +53,7 @@
 }
 
 @mixin resource_card($resource) {
-  background-image: url($resource);
+  background: image-url($resource);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
