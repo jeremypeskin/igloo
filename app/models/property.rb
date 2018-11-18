@@ -3,4 +3,5 @@ class Property < ActiveRecord::Base
   has_many :units
   has_many :expenses
   has_many :invoices
+  has_many :recurring_events
 end
