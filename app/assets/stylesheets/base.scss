@@ -67,11 +67,11 @@
 }
 
 .unit_card {
-  @include resource_card('unit.jpg')
+  @include resource_card("unit.jpg")
 }
 
 .property_card {
-  @include resource_card('property.jpg')
+  @include resource_card("property.jpg")
 }
 
 //Flash notifications
