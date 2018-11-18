@@ -1,6 +1,6 @@
-namespace :db do
+  namespace :db do
 
-  desc 'Create recurring events'
+  desc 'This task creates invoices and expenses based on recurring events'
   task :recurring_event => :environment do
     Dir.glob("#{Rails.root}/app/models/*.rb").each { |file| require file }
     RecurringEvent.all.each do |event|
