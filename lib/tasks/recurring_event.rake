@@ -14,7 +14,7 @@
         end
       end
     else
-      puts 'Not the right day'
+      puts Time.now.day
     end
   end
 
