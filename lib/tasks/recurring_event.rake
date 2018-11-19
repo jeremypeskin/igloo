@@ -13,6 +13,8 @@
           puts 'Expense created'
         end
       end
+    else
+      puts 'Not the right day'
     end
   end
 
