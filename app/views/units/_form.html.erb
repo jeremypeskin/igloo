@@ -23,15 +23,10 @@
 
   <div class="select-container">
     <div class="select">
-      <select name="unit[property_id]" id="unit_property_id" class="select-text" required>
-        <option value="" disabled selected></option>
-        <% @properties.each do |property| %>
-          <%= "<option value='#{property.id}'>#{property.address}</option>".html_safe %>
-        <% end %>
-      </select>
+      <%= f.collection_select(:property_id, Property.all, :id, :address, {:include_blank => false}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
-      <label class="select-label">Select</label>
+      <label class="select-label">Property</label>
     </div>
   </div>
 
