@@ -22,19 +22,16 @@
   <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <%= f.text_field :date, :type=>"date", :value => Time.now.strftime('%Y-%m-%d'), :class=>"mdl-textfield__input" %>
   </div><br />
+
   <div class="select-container">
     <div class="select">
-      <select name="expense[unit_id]" id="expense_unit_id" class="select-text" required>
-        <option value="" disabled selected></option>
-        <% @units.each do |unit| %>
-        <%= "<option value='#{unit.id}'>#{unit.name}</option>".html_safe %>
-        <% end %>
-      </select>
+      <%= f.collection_select(:unit_id, Unit.all, :id, :name, {:include_blank => false}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
-      <label class="select-label">Select</label>
+      <label class="select-label">Unit</label>
     </div>
   </div>
+
   <div class="actions">
     <%= f.submit :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
   </div>

@@ -36,15 +36,10 @@
 
   <div class="select-container">
     <div class="select">
-      <select name="recurring_event[unit_id]" id="recurring_event_unit_id" class="select-text" required>
-        <option value="" disabled selected></option>
-        <% @units.each do |unit| %>
-        <%= "<option value='#{unit.id}'>#{unit.name}</option>".html_safe %>
-        <% end %>
-      </select>
+      <%= f.collection_select(:unit_id, Unit.all, :id, :name, {:include_blank => false}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
-      <label class="select-label">Select</label>
+      <label class="select-label">Unit</label>
     </div>
   </div>
 
