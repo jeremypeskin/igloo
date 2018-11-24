@@ -25,17 +25,14 @@
 
   <div class="select-container">
     <div class="select">
-      <select name="invoice[status]" id="invoice_unit_id" class="select-text">
-        <option value="" disabled selected></option>
-        <% Invoice.statuses.each do |status| %>
-        <%= "<option value='#{status[0]}'>#{status[0]}</option>".html_safe %>
-        <% end %>
-      </select>
+      <%= f.collection_select(:status, Invoice.statuses.map { |s| [s.first, s.first] }, :first, :second, {:include_blank => false}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
-      <label class="select-label">Select</label>
+      <label class="select-label">Status</label>
     </div>
-  </div><br />
+  </div>
+
+  </br>
 
   <div class="select-container">
     <div class="select">

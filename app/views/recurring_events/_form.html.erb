@@ -22,17 +22,14 @@
 
   <div class="select-container">
     <div class="select">
-      <select name="recurring_event[category]" id="recurring_event_unit_id" class="select-text">
-        <option value="" disabled selected></option>
-        <% RecurringEvent.categories.each do |category| %>
-        <%= "<option value='#{category[0]}'>#{category[0]}</option>".html_safe %>
-        <% end %>
-      </select>
+      <%= f.collection_select(:category, RecurringEvent.categories.map { |c| [c.first, c.first] }, :first, :second, {:include_blank => false}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
-      <label class="select-label">Select</label>
+      <label class="select-label">Category</label>
     </div>
-  </div><br />
+  </div>
+
+  <br />
 
   <div class="select-container">
     <div class="select">
