@@ -1,5 +1,5 @@
 <div class="mdl-grid">
-  <div class="mdl-cell--8-col mdl-shadow--4dp p-50 auto">
+  <div class="mdl-cell--8-col mdl-shadow--4dp p-50 auto mdl-color--white">
     <h3>Login</h3>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -15,10 +15,10 @@
       </div>
 
       <% if devise_mapping.rememberable? -%>
-        <div class="field mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <label class="field mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
           <%= f.check_box :remember_me, :class=>"mdl-checkbox__input" %>
-          <%= f.label :remember_me, :class=>"mdl-checkbox__label" %>
-        </div>
+          <span class="mdl-checkbox__label">Remember me</span>
+        </label>
       <% end -%>
 
       <div class="actions">

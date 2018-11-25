@@ -64,6 +64,11 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def pay
+    Invoice.where(id: params[:invoice_ids]).update_all(status: 1)
+    redirect_to invoices_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice

@@ -65,8 +65,12 @@
             </tr>
           </thead>
           <tbody>
+            <% form_tag pay_invoices_path, :method => :patch do %>
               <% @unit.invoices.each do |invoice| %>
                 <tr>
+                  <td>
+                    <%= check_box_tag "invoice_ids[]", invoice.id %>
+                  </td>
                   <td class="mdl-data-table__cell--non-numeric"><%= invoice.description %></td>
                   <td> <%= invoice.amount %> </td>
                   <td> <%= invoice.date %> </td>
@@ -74,10 +78,19 @@
                   <td>
                     <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_invoice_path(invoice), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
                     <%= link_to '<i class="material-icons">delete</i>'.html_safe, invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
-                <% end %>
+                  </td>
+                </tr>
+              <% end %>
+              <%= submit_tag "Mark as Paid" %>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                Hello
               </td>
             </tr>
-          </tbody>
+          </tfoot>
         </table>
       </div>
     </div>
