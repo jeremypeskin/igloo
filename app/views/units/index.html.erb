@@ -1,23 +1,27 @@
 <div class="cards-container">
-  <% @units.each do |unit| %>
-    <div class="demo-card-event mdl-card mdl-shadow--2dp">
-      <div class="unit_card">
+  <% if @units.exists? %>
+    <% @units.each do |unit| %>
+      <div class="demo-card-event mdl-card mdl-shadow--2dp">
+        <div class="unit_card">
+        </div>
+        <div class="mdl-card__title mdl-card--expand">
+          <h4>
+            <%= unit.name %>
+          </h4>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <p class="mdl-color-text--white">
+            <%= unit.property.try(:address) %>
+          </p>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <%= link_to 'Show', unit, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+          <%= link_to 'Edit', edit_unit_path(unit), :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+          <%= link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
+        </div>
       </div>
-      <div class="mdl-card__title mdl-card--expand">
-        <h4>
-          <%= unit.name %>
-        </h4>
-      </div>
-      <div class="mdl-card__supporting-text">
-        <p class="mdl-color-text--white">
-          <%= unit.property.try(:address) %>
-        </p>
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <%= link_to 'Show', unit, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
-        <%= link_to 'Edit', edit_unit_path(unit), :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
-        <%= link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" %>
-      </div>
-    </div>
+    <% end %>
+  <% else %>
+    <%= render "shared_partials/placeholder" %>
   <% end %>
 </div>
