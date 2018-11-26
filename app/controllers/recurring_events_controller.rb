@@ -1,6 +1,7 @@
 class RecurringEventsController < ApplicationController
   before_action :set_recurring_event, only: [:show, :edit, :update, :destroy]
   before_action :find_user
+  before_action :authenticate_user!
 
   # GET /recurring_events
   # GET /recurring_events.json

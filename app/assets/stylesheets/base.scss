@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.relative {
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+}
+
+.igloo-glow {
+  position: absolute;
+  top: 355px;
+  left: 718px;
+  width: 74px;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
 .placeholder-image {
   width: 150px;
   float: left;
@@ -25,7 +42,7 @@
 }
 
 .mdl-layout__content {
-  padding: 20px;
+  margin: 20px;
 }
 
 .cards-container {

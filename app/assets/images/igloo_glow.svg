@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="63px" viewBox="0 0 64 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>path4361 copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-18.3%" y="-18.4%" width="136.6%" height="136.7%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="3" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-572.000000, -332.000000)" fill="#FFFF00">
+            <g id="igloo_night" transform="translate(33.000000, -72.000000)">
+                <g id="g4635">
+                    <path d="M546.109989,460.040092 C545.221527,443.265539 549.768944,426.877398 557.819113,417.842338 C565.869286,408.80728 576.007273,408.713352 583.923374,417.600483 C591.839475,426.487611 596.142319,442.793752 595.002748,459.587098" id="path4361-copy" filter="url(#filter-1)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
