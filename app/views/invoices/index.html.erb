@@ -18,7 +18,12 @@
         <tbody>
           <% @invoices.each do |invoice| %>
             <tr>
-              <td> <%= check_box_tag "invoice_ids[]", invoice.id %> </td>
+              <td>
+                <label class="field mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                  <%= check_box_tag "invoice_ids[]", invoice.id, false, :class=>"mdl-checkbox__input" %>
+                  <span class="mdl-checkbox__label"></span>
+                </label>
+              </td>
               <td class="mdl-data-table__cell--non-numeric"><%= invoice.description %></td>
               <td> $<%= invoice.amount %> </td>
               <td> <%= invoice.date %> </td>
@@ -34,8 +39,8 @@
         </tbody>
         <tfoot>
           <tr>
-            <td>
-               <%= submit_tag "Mark as paid" %>
+            <td colspan="8">
+               <%= submit_tag "Mark as paid", :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" %>
             </td>
           </tr>
         </tfoot>
