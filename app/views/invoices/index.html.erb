@@ -25,7 +25,7 @@
                 </label>
               </td>
               <td class="mdl-data-table__cell--non-numeric"><%= invoice.description %></td>
-              <td> $<%= invoice.amount %> </td>
+              <td> <%= currency(invoice.amount) %> </td>
               <td> <%= invoice.date %> </td>
               <td><%= invoice.status %></td>
               <td> <%= invoice.unit.try(:name) %> </td>

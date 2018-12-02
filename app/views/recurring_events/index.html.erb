@@ -17,7 +17,7 @@
         <% @recurring_events.each do |recurring_event| %>
           <tr>
             <td class="mdl-data-table__cell--non-numeric"><%= recurring_event.description %></td>
-            <td><%= recurring_event.amount %></td>
+            <td><%= currency(recurring_event.amount) %></td>
             <td><%= recurring_event.category %></td>
             <td> <%= recurring_event.unit.try(:name) %> </td>
             <td> <%= recurring_event.unit.try(:property).try(:address) %> </td>

@@ -37,7 +37,7 @@
             <% @unit.expenses.each do |expense| %>
               <tr>
                 <td class="mdl-data-table__cell--non-numeric"><%= expense.description %></td>
-                <td> <%= expense.amount %> </td>
+                <td> <%= currency(expense.amount) %> </td>
                 <td> <%= expense.date %> </td>
                 <td>
                   <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_expense_path(expense), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs" %>
@@ -68,7 +68,7 @@
             <% @unit.invoices.each do |invoice| %>
               <tr>
                 <td class="mdl-data-table__cell--non-numeric"><%= invoice.description %></td>
-                <td> <%= invoice.amount %> </td>
+                <td> <%= currency(invoice.amount) %> </td>
                 <td> <%= invoice.date %> </td>
                 <td> <%= invoice.status %> </td>
                 <td>

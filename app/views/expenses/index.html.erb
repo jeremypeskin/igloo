@@ -16,7 +16,7 @@
         <% @expenses.each do |expense| %>
           <tr>
             <td class="mdl-data-table__cell--non-numeric"><%= expense.description %></td>
-            <td> $<%= expense.amount %> </td>
+            <td> <%= currency(expense.amount) %> </td>
             <td> <%= expense.date %> </td>
             <td> <%= expense.unit.try(:name) %> </td>
             <td> <%= expense.unit.try(:property).try(:address) %> </td>
