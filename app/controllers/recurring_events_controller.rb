@@ -6,7 +6,7 @@ class RecurringEventsController < ApplicationController
   # GET /recurring_events
   # GET /recurring_events.json
   def index
-    @recurring_events = RecurringEvent.all
+    @recurring_events = @user.recurring_events
   end
 
   # GET /recurring_events/1

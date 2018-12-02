@@ -1,11 +1,12 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :find_user
 
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = @user.invoices
   end
 
   # GET /invoices/1
@@ -79,5 +80,9 @@ class InvoicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_params
       params.require(:invoice).permit(:description, :amount, :date, :status, :unit_id, :property_id, :user_id)
+    end
+
+    def find_user
+      @user = current_user
     end
 end

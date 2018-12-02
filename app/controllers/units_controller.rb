@@ -6,7 +6,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = Unit.all
+    @units = @user.units
   end
 
   # GET /units/1

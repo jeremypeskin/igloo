@@ -1,11 +1,12 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :find_user
 
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
+    @expenses = @user.expenses
   end
 
   # GET /expenses/1
@@ -74,5 +75,9 @@ class ExpensesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
       params.require(:expense).permit(:amount, :description, :date, :unit_id)
+    end
+
+    def find_user
+      @user = current_user
     end
 end

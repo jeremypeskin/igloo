@@ -6,18 +6,7 @@
   position: relative;
 }
 
-.hero-image {
-  width: 100%;
-}
 
-.igloo-glow {
-  position: absolute;
-  top: 355px;
-  left: 718px;
-  width: 74px;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-}
 
 .placeholder-image {
   width: 150px;
@@ -75,6 +64,10 @@
   min-width: 30px;
 }
 
+.mb-50 {
+  margin-bottom: 50px;
+}
+
 @mixin resource_card($resource) {
   background: image-url($resource);
   background-position: center;
@@ -100,9 +93,13 @@
 //Flash notifications
 .notice {
   color: green;
+  clear: both;
+  padding: 10px;
 }
 .alert {
-  color: red;
+  clear: both;
+  color: #a94442;
+  padding: 10px;
 }
 
 // Material select
