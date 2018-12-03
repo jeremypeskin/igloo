@@ -74,7 +74,7 @@ class RecurringEventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recurring_event_params
-      params.require(:recurring_event).permit(:amount, :description, :category, :unit_id)
+      params.require(:recurring_event).permit(:amount, :description, :category, :unit_id, :property_id, :event_type)
     end
 
     def find_user

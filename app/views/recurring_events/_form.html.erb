@@ -31,14 +31,27 @@
 
   <br />
 
-  <div class="select-container unit-expense">
+
+  <div class="select-container unit-event">
     <div class="select">
       <%= f.collection_select(:unit_id, Unit.all, :id, :name, {:include_blank => "Select a unit"}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
-      <label class="select-label"></label>
+      <label class="select-label">Unit</label>
     </div>
   </div>
+
+
+
+  <div class="select-container property-event">
+    <div class="select">
+      <%= f.collection_select(:property_id, Property.all, :id, :address, {:include_blank => "Select a property"}, { class: "select-text" }) %>
+      <span class="select-highlight"></span>
+      <span class="select-bar"></span>
+      <label class="select-label">Property</label>
+    </div>
+  </div>
+
 
   <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mb-50" for="assign-to-unit">
     <%= f.radio_button( :event_type, 'Unit', options={id:"assign-to-unit", class:"mdl-radio__button"}) %>
