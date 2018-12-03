@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181118211749) do
+ActiveRecord::Schema.define(version: 20181203004656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20181118211749) do
     t.integer  "amount"
     t.string   "description"
     t.date     "date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "expense_type", default: 0
   end
 
   add_index "expenses", ["property_id"], name: "index_expenses_on_property_id", using: :btree
@@ -64,8 +65,9 @@ ActiveRecord::Schema.define(version: 20181118211749) do
     t.integer  "amount"
     t.string   "description"
     t.integer  "category"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "event_type",  default: 0
   end
 
   add_index "recurring_events", ["property_id"], name: "index_recurring_events_on_property_id", using: :btree
