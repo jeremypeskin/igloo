@@ -3,12 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 document.addEventListener 'turbolinks:load', ->
-  unitOrProperty($("input:radio[name='recurring_event[event_type]']:checked"))
-  $("input:radio[name='recurring_event[event_type]']").change ->
-    unitOrProperty($("input:radio[name='recurring_event[event_type]']:checked"))
+  unitOrProperty($(".event-type-radio:checked"))
+  $(".event-type-radio").change ->
+    unitOrProperty($(".event-type-radio:checked"))
 
 unitOrProperty = (eventTypeRadio) ->
-  console.log eventTypeRadio.val()
   if eventTypeRadio.val() == 'Unit'
     $('.property-event').hide()
     $('.unit-event').show()
