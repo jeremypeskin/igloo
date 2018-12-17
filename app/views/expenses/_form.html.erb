@@ -23,14 +23,32 @@
     <%= f.text_field :date, :type=>"date", :value => Time.now.strftime('%Y-%m-%d'), :class=>"mdl-textfield__input" %>
   </div><br />
 
-  <div class="select-container">
+  <div class="select-container unit-event">
     <div class="select">
-      <%= f.collection_select(:unit_id, Unit.all, :id, :name, {:include_blank => false}, { class: "select-text" }) %>
+      <%= f.collection_select(:unit_id, @units, :id, :name, {:include_blank => "Select a unit"}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
       <label class="select-label">Unit</label>
     </div>
   </div>
+
+  <div class="select-container property-event">
+    <div class="select">
+      <%= f.collection_select(:property_id, @properties, :id, :address, {:include_blank => "Select a property"}, { class: "select-text" }) %>
+      <span class="select-highlight"></span>
+      <span class="select-bar"></span>
+      <label class="select-label">Property</label>
+    </div>
+  </div>
+
+  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mb-50" for="assign-to-unit">
+    <%= f.radio_button( :expense_type, 'Unit', options={id:"assign-to-unit", class:"mdl-radio__button event-type-radio"}) %>
+    <span class="mdl-radio__label">Assign to Unit</span>
+  </label>
+  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mb-50" for="assign-to-property">
+    <%= f.radio_button( :expense_type, 'Property', options={id:"assign-to-property", class:"mdl-radio__button event-type-radio"}) %>
+    <span class="mdl-radio__label">Assign to Property</span>
+  </label>
 
   <div class="actions">
     <%= f.submit :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>

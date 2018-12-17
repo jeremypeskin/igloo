@@ -18,11 +18,13 @@ class RecurringEventsController < ApplicationController
   def new
     @recurring_event = RecurringEvent.new
     @units = @user.units
+    @properties = @user.properties
   end
 
   # GET /recurring_events/1/edit
   def edit
     @units = @user.units
+    @properties = @user.properties
   end
 
   # POST /recurring_events

@@ -17,19 +17,19 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit = Unit.new
-    @properties = current_user.properties
+    @properties = @user.properties
   end
 
   # GET /units/1/edit
   def edit
-    @properties = current_user.properties
+    @properties = @user.properties
   end
 
   # POST /units
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
-    @unit.user_id = current_user.id
+    @unit.user_id = @user.id
 
     respond_to do |format|
       if @unit.save

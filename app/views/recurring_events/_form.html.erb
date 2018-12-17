@@ -34,7 +34,7 @@
 
   <div class="select-container unit-event">
     <div class="select">
-      <%= f.collection_select(:unit_id, Unit.all, :id, :name, {:include_blank => "Select a unit"}, { class: "select-text" }) %>
+      <%= f.collection_select(:unit_id, @units, :id, :name, {:include_blank => "Select a unit"}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
       <label class="select-label">Unit</label>
@@ -45,7 +45,7 @@
 
   <div class="select-container property-event">
     <div class="select">
-      <%= f.collection_select(:property_id, Property.all, :id, :address, {:include_blank => "Select a property"}, { class: "select-text" }) %>
+      <%= f.collection_select(:property_id, @properties, :id, :address, {:include_blank => "Select a property"}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
       <label class="select-label">Property</label>

@@ -17,19 +17,19 @@ class InvoicesController < ApplicationController
   # GET /invoices/new
   def new
     @invoice = Invoice.new
-    @units = current_user.units
+    @units = @user.units
   end
 
   # GET /invoices/1/edit
   def edit
-    @units = current_user.units
+    @units = @user.units
   end
 
   # POST /invoices
   # POST /invoices.json
   def create
     @invoice = Invoice.new(invoice_params)
-    @invoice.user_id = current_user.id
+    @invoice.user_id = @user.id
 
     respond_to do |format|
       if @invoice.save

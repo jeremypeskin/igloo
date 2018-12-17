@@ -15,8 +15,12 @@
         <%= @expense.date %>
       </p>
       <p>
+        <strong>Property:</strong>
+        <%= @expense.property.try(:address) %>
+      </p>
+      <p>
         <strong>Unit:</strong>
-        <%= @expense.unit.name %>
+        <%= @expense.unit.try(:name) %>
       </p>
     </div>
     <div class="mdl-card__actions">

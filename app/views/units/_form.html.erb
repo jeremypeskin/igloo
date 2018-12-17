@@ -23,7 +23,7 @@
 
   <div class="select-container">
     <div class="select">
-      <%= f.collection_select(:property_id, Property.all, :id, :address, {:include_blank => false}, { class: "select-text" }) %>
+      <%= f.collection_select(:property_id, @properties, :id, :address, {:include_blank => false}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
       <label class="select-label">Property</label>

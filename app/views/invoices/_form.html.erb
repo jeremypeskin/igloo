@@ -36,7 +36,7 @@
 
   <div class="select-container">
     <div class="select">
-      <%= f.collection_select(:unit_id, Unit.all, :id, :name, {:include_blank => false}, { class: "select-text" }) %>
+      <%= f.collection_select(:unit_id, @units, :id, :name, {:include_blank => false}, { class: "select-text" }) %>
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
       <label class="select-label">Unit</label>
