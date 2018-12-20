@@ -7,6 +7,7 @@ class ExpensesController < ApplicationController
   # GET /expenses.json
   def index
     @expenses = @user.expenses
+    @sum_of_expenses = @user.expenses.sum(:amount)
   end
 
   # GET /expenses/1
