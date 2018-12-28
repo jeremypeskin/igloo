@@ -1,0 +1,26 @@
+.cards-container
+  - if @recurring_events.exists?
+    %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.full-width
+      %thead
+        %tr
+          %th.mdl-data-table__cell--non-numeric Description
+          %th Amount
+          %th Category
+          %th Unit
+          %th Property
+          %th
+      %tbody
+        - @recurring_events.each do |recurring_event|
+          %tr
+            %td.mdl-data-table__cell--non-numeric= recurring_event.description
+            %td= currency(recurring_event.amount)
+            %td= recurring_event.category
+            %td
+              = recurring_event.unit.try(:name)
+            %td
+              = recurring_event.unit.try(:property).try(:address)
+            %td
+              = link_to '<i class="material-icons">edit</i>'.html_safe, edit_recurring_event_path(recurring_event), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
+              = link_to '<i class="material-icons">delete</i>'.html_safe, recurring_event, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
+  - else
+    = render "shared_partials/placeholder"

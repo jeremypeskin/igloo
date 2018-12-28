@@ -28,6 +28,9 @@ gem 'devise'
 gem 'material_design_lite-rails', '~> 1.3'
 # for heroku
 gem 'rails_12factor', group: :production
+# haml
+gem 'haml'
+gem 'haml-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

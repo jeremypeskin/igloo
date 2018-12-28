@@ -1,0 +1,20 @@
+.resource-header.mdl-grid.section--center.mdl-shadow--2dp.mdl-color--white
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      %h4
+        = @expense.description
+      %p
+        %strong Amount:
+        = currency(@expense.amount)
+      %p
+        %strong Date:
+        = @expense.date
+      %p
+        %strong Property:
+        = @expense.property.try(:address)
+      %p
+        %strong Unit:
+        = @expense.unit.try(:name)
+    .mdl-card__actions
+      = link_to 'Edit', edit_expense_path(@expense), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+      = link_to 'Back', expenses_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"

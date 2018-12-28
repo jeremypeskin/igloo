@@ -1,0 +1,34 @@
+= form_for(@invoice) do |f|
+  - if @invoice.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@invoice.errors.count, "error")
+        prohibited this invoice from being saved:
+      %ul
+        - @invoice.errors.full_messages.each do |message|
+          %li= message
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :description, :class=>"mdl-textfield__label"
+    = f.text_field :description, :class=>"mdl-textfield__input", required:true, autofocus:true
+  %br/
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :amount, :class=>"mdl-textfield__label"
+    = f.number_field :amount, :class=>"mdl-textfield__input"
+  %br/
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.text_field :date, :type=>"date", :value => Time.now.strftime('%Y-%m-%d'), :class=>"mdl-textfield__input"
+  %br/
+  .select-container
+    .select
+      = f.collection_select(:status, Invoice.statuses.map { |s| [s.first, s.first] }, :first, :second, {:include_blank => false}, { class: "select-text" })
+      %span.select-highlight
+      %span.select-bar
+      %label.select-label Status
+  .select-container
+    .select
+      = f.collection_select(:unit_id, @units, :id, :name, {:include_blank => false}, { class: "select-text" })
+      %span.select-highlight
+      %span.select-bar
+      %label.select-label Unit
+  .actions
+    = f.submit :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"

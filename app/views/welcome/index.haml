@@ -1,0 +1,11 @@
+.image-container
+  = image_tag('hero_image.svg', class:'hero-image')
+.center.mb-50
+  %h5.mdl-color-text--grey-500
+    = image_tag('igloo_icon.svg', class:'igloo-icon')
+    igloos
+  %h3 Tech for Investment Property Management
+  %h6.mdl-color-text--grey-700
+    Manage properties, units, rents, expenses, tenants and more.
+  = link_to "GET STARTED", new_user_registration_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+  = link_to "LOGIN", new_user_session_path, :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"

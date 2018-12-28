@@ -1,0 +1,8 @@
+.resource-header.mdl-grid.section--center.mdl-shadow--2dp.mdl-color--white
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      %h4 Editing Unit
+      = render 'form'
+    .mdl-card__actions
+      = link_to 'Show', @unit, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+      = link_to 'Back', units_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"

@@ -1,0 +1,59 @@
+.mdl-grid.resource-header.section--center
+  .mdl-shadow--2dp.mdl-color--white.mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      %h4= @unit.name
+      %p
+        %strong Property:
+        = @unit.property.address
+      %p
+        %strong Rent:
+        = @unit.rent
+    .mdl-card__actions
+      = link_to 'Edit', edit_unit_path(@unit), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+      = link_to 'Back', units_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+.mdl-grid
+  - if @unit.expenses.exists?
+    .mdl-cell.mdl-cell--6-col
+      .cards-container
+        %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.full-width
+          %thead
+            %tr
+              %th.mdl-data-table__cell--non-numeric Expense
+              %th Amount
+              %th Date
+              %th
+          %tbody
+            - @unit.expenses.each do |expense|
+              %tr
+                %td.mdl-data-table__cell--non-numeric= expense.description
+                %td
+                  = currency(expense.amount)
+                %td
+                  = expense.date
+                %td
+                  = link_to '<i class="material-icons">edit</i>'.html_safe, edit_expense_path(expense), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
+                  = link_to '<i class="material-icons">delete</i>'.html_safe, expense, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
+  - if @unit.invoices.exists?
+    .mdl-cell.mdl-cell--6-col
+      .cards-container
+        %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.full-width
+          %thead
+            %tr
+              %th.mdl-data-table__cell--non-numeric Invoice
+              %th Amount
+              %th Date
+              %th Status
+              %th
+          %tbody
+            - @unit.invoices.each do |invoice|
+              %tr
+                %td.mdl-data-table__cell--non-numeric= invoice.description
+                %td
+                  = currency(invoice.amount)
+                %td
+                  = invoice.date
+                %td
+                  = invoice.status
+                %td
+                  = link_to '<i class="material-icons">edit</i>'.html_safe, edit_invoice_path(invoice), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
+                  = link_to '<i class="material-icons">delete</i>'.html_safe, invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"

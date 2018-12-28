@@ -1,0 +1,22 @@
+.resource-header.mdl-grid.section--center.mdl-shadow--2dp.mdl-color--white
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      %h4
+        = @property.address
+      %p
+        %strong Price:
+        = @property.price
+    .mdl-card__actions
+      = link_to 'Edit', edit_property_path(@property), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+      = link_to 'Back', properties_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+.cards-container
+  - @property.units.each do |unit|
+    .demo-card-event.mdl-card.mdl-shadow--2dp.mdl-color--white
+      .unit_card
+      .mdl-card__title.mdl-card--expand
+        %h4.mdl-color-text--indigo.bold
+          = unit.name
+      .mdl-card__actions.mdl-card--border
+        = link_to 'Show', unit, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+        = link_to 'Edit', edit_unit_path(unit), :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+        = link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"

@@ -1,0 +1,17 @@
+.cards-container
+  - if @units.exists?
+    - @units.each do |unit|
+      .demo-card-event.mdl-card.mdl-shadow--2dp.mdl-color--white
+        .unit_card
+        .mdl-card__title.mdl-card--expand
+          %h4.mdl-color-text--indigo.bold
+            = unit.name
+        .mdl-card__supporting-text
+          %p.mdl-color-text--indigo.bold
+            = unit.property.try(:address)
+        .mdl-card__actions.mdl-card--border
+          = link_to 'Show', unit, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+          = link_to 'Edit', edit_unit_path(unit), :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+          = link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+  - else
+    = render "shared_partials/placeholder"

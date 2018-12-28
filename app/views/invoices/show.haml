@@ -1,0 +1,20 @@
+.resource-header.mdl-grid.section--center.mdl-shadow--2dp.mdl-color--white
+  .mdl-card.mdl-cell.mdl-cell--12-col
+    .mdl-card__supporting-text
+      %h4
+        = @invoice.description
+      %p
+        %strong Amount:
+        = currency(@invoice.amount)
+      %p
+        %strong Date:
+        = @invoice.date
+      %p
+        %strong Status:
+        = @invoice.status
+      %p
+        %strong Unit:
+        = @invoice.unit_id
+    .mdl-card__actions
+      = link_to 'Edit', edit_invoice_path(@invoice), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+      = link_to 'Back', invoices_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"

@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Igloos
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    = favicon_link_tag asset_path('igloo_icon.png')
+  %body.mdl-color--grey-100
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      %header.mdl-layout__header
+        .mdl-layout__header-row
+          = link_to('Igloos', properties_path, :class=>"mdl-layout-title mdl-color-text--white")
+          .mdl-layout-spacer
+          %nav.mdl-navigation
+            - if user_signed_in?
+              %a#demo-menu-lower-right.mdl-navigation__link{:href => "javascript:void(0)"}
+                CREATE
+                %span ▼
+              %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{:for => "demo-menu-lower-right"}
+                = link_to 'Property', new_property_path, :class=>"mdl-menu__item"
+                = link_to 'Unit', new_unit_path, :class=>"mdl-menu__item"
+                = link_to 'Expense', new_expense_path, :class=>"mdl-menu__item"
+                = link_to 'Invoice', new_invoice_path, :class=>"mdl-menu__item"
+                = link_to 'Recurring Event', new_recurring_event_path, :class=>"mdl-menu__item"
+              = link_to('LOGOUT', destroy_user_session_path, method: :delete, :class=>"mdl-navigation__link")
+            - else
+              = link_to('LOGIN', new_user_session_path, :class=>"mdl-navigation__link")
+      - if user_signed_in?
+        .mdl-layout__drawer
+          %span.mdl-layout-title Igloo
+          %nav.mdl-navigation
+            = link_to 'Properties', properties_path, :class=>"mdl-navigation__link"
+            = link_to 'Units', units_path, :class=>"mdl-navigation__link"
+            = link_to 'Expenses', expenses_path, :class=>"mdl-navigation__link"
+            = link_to 'Invoices', invoices_path, :class=>"mdl-navigation__link"
+            = link_to 'Recurring Events', recurring_events_path, :class=>"mdl-navigation__link"
+      %main.mdl-layout__content
+        .page-content
+          = yield
+          %p.notice.center= notice
+          %p.alert.center= alert

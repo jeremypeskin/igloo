@@ -1,0 +1,14 @@
+.cards-container
+  - if @properties.exists?
+    - @properties.each do |property|
+      .demo-card-event.mdl-card.mdl-shadow--2dp.mdl-color--white
+        .property_card
+        .mdl-card__title.mdl-card--expand
+          %h4.mdl-color-text--indigo.bold
+            = property.address
+        .mdl-card__actions.mdl-card--border
+          = link_to 'Show', property, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+          = link_to 'Edit', edit_property_path(property), :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+          = link_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+  - else
+    = render "shared_partials/placeholder"

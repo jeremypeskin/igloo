@@ -1,0 +1,17 @@
+= form_for(@property) do |f|
+  - if @property.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@property.errors.count, "error")
+        prohibited this property from being saved:
+      %ul
+        - @property.errors.full_messages.each do |message|
+          %li= message
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :address, :class=>"mdl-textfield__label"
+    = f.text_field :address, :class=>"mdl-textfield__input", required:true, autofocus: true
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :price, :class=>"mdl-textfield__label"
+    = f.text_field :price, :class=>"mdl-textfield__input"
+  .actions
+    = f.submit :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
