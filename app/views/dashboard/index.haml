@@ -3,8 +3,8 @@
     %p Cashflow
     .chart
       = line_chart [                                                                          |
-          {name: "Expenses", data: current_user.expenses.group_by_week(:date).sum(:amount)},  |
-          {name: "Invoices", data: current_user.invoices.group_by_week(:date).sum(:amount)},  |
+          {name: "Expenses", data: current_user.expenses.group_by_month(:date).sum(:amount)},  |
+          {name: "Invoices", data: current_user.invoices.group_by_month(:date).sum(:amount)},  |
         ], prefix: '$', thousands: ","                                                        |
 
       /= area_chart current_user.expenses.group_by_week(:date).sum(:amount), prefix: "$", thousands: ","
