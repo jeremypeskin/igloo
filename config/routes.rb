@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :expenses
   resources :units
   resources :properties
+  resources :dashboard, only: [:index]
   devise_for :users
   get 'welcome/index'
 

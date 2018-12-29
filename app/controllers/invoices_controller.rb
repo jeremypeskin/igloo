@@ -30,6 +30,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
     @invoice.user_id = @user.id
+    @invoice.property_id = @invoice.property_id.presence || @invoice.unit.property_id
 
     respond_to do |format|
       if @invoice.save

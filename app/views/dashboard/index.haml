@@ -1,0 +1,23 @@
+.mdl-grid
+  .mdl-card.mdl-cell.mdl-cell--12-col.mdl-shadow--4dp.chart-card
+    %p Cashflow
+    .chart
+      = line_chart [                                                                          |
+          {name: "Expenses", data: current_user.expenses.group_by_week(:date).sum(:amount)},  |
+          {name: "Invoices", data: current_user.invoices.group_by_week(:date).sum(:amount)},  |
+        ], prefix: '$', thousands: ","                                                        |
+
+      /= area_chart current_user.expenses.group_by_week(:date).sum(:amount), prefix: "$", thousands: ","
+
+
+.mdl-grid
+  .mdl-card.mdl-cell.mdl-cell--6-col.mdl-shadow--4dp.chart-card
+    %p Expenses by Property
+    .chart
+      = pie_chart @expenses.joins(:property).group("properties.address").sum(:amount), prefix: '$', thousands: ","
+
+
+  .mdl-card.mdl-cell.mdl-cell--6-col.mdl-shadow--4dp.chart-card
+    %p Invoices by Property
+    .chart
+      = pie_chart @invoices.joins(:property).group("properties.address").sum(:amount), prefix: '$', thousands: ","

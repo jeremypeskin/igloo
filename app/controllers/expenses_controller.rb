@@ -33,6 +33,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.user_id = @user.id
+    @expense.property_id = @expense.property_id.presence || @expense.unit.property_id
 
     respond_to do |format|
       if @expense.save

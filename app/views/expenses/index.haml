@@ -20,7 +20,7 @@
             %td
               = expense.unit.try(:name)
             %td
-              = expense.unit.try(:property).try(:address).presence || expense.property.try(:address)
+              = expense.property.try(:address)
             %td
               = link_to '<i class="material-icons">edit</i>'.html_safe, edit_expense_path(expense), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
               = link_to '<i class="material-icons">delete</i>'.html_safe, expense, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"

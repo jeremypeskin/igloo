@@ -33,6 +33,7 @@
         .mdl-layout__drawer
           %span.mdl-layout-title Igloo
           %nav.mdl-navigation
+            = link_to 'Dashboard', '/dashboard', :class=>"mdl-navigation__link"
             = link_to 'Properties', properties_path, :class=>"mdl-navigation__link"
             = link_to 'Units', units_path, :class=>"mdl-navigation__link"
             = link_to 'Expenses', expenses_path, :class=>"mdl-navigation__link"

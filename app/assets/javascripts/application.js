@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require material
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 document.addEventListener('turbolinks:load', function() {
