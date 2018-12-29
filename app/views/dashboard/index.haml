@@ -1,10 +1,26 @@
 .mdl-grid
+  .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
+    %p.mdl-color-text--grey Revenue (to-date):
+    %h3.mdl-color-text--indigo
+      = currency(@sum_of_invoices)
+
+  .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
+    %p.mdl-color-text--grey Expenses (to-date):
+    %h3.mdl-color-text--pink
+      = currency(@sum_of_expenses)
+
+  .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
+    %p.mdl-color-text--grey Net Income (to-date):
+    %h3
+      = currency(@net_income)
+
+.mdl-grid
   .mdl-card.mdl-cell.mdl-cell--12-col.mdl-shadow--4dp.chart-card
-    %p Cashflow
+    %p.mdl-color-text--grey Cashflow
     .chart
       = line_chart [                                                                          |
           {name: "Expenses", data: current_user.expenses.group_by_month(:date).sum(:amount)},  |
-          {name: "Invoices", data: current_user.invoices.group_by_month(:date).sum(:amount)},  |
+          {name: "Revenue", data: current_user.invoices.group_by_month(:date).sum(:amount)},  |
         ], prefix: '$', thousands: ","                                                        |
 
       /= area_chart current_user.expenses.group_by_week(:date).sum(:amount), prefix: "$", thousands: ","
@@ -12,12 +28,12 @@
 
 .mdl-grid
   .mdl-card.mdl-cell.mdl-cell--6-col.mdl-shadow--4dp.chart-card
-    %p Expenses by Property
+    %p.mdl-color-text--grey Expenses by Property
     .chart
       = pie_chart @expenses.joins(:property).group("properties.address").sum(:amount), prefix: '$', thousands: ","
 
 
   .mdl-card.mdl-cell.mdl-cell--6-col.mdl-shadow--4dp.chart-card
-    %p Invoices by Property
+    %p.mdl-color-text--grey Revenue by Property
     .chart
       = pie_chart @invoices.joins(:property).group("properties.address").sum(:amount), prefix: '$', thousands: ","
