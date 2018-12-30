@@ -1,4 +1,12 @@
 .mdl-grid
+  .select-container
+    .select
+      = collection_select(:post, :property_id, @properties, :id, :address, {:include_blank => "All Properties"}, { class: "select-text", id: 'snapshot-select' })
+      %span.select-highlight
+      %span.select-bar
+      %label.select-label Property
+
+.mdl-grid.property_snapshot#all_properties
   .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
     %p.mdl-color-text--grey Revenue (to-date):
     %h3.mdl-color-text--indigo
@@ -14,6 +22,23 @@
     %h3
       = currency(@net_income)
 
+- current_user.properties.each do |property|
+  .mdl-grid.property_snapshot{:id => "#{property.id}"}
+    .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
+      %p.mdl-color-text--grey Revenue (to-date):
+      %h3.mdl-color-text--indigo
+        = currency(property.invoices.sum(:amount))
+
+    .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
+      %p.mdl-color-text--grey Expenses (to-date):
+      %h3.mdl-color-text--pink
+        = currency(property.expenses.sum(:amount))
+
+    .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
+      %p.mdl-color-text--grey Net Income (to-date):
+      %h3
+        = currency(property.invoices.sum(:amount) - property.expenses.sum(:amount))
+
 .mdl-grid
   .mdl-card.mdl-cell.mdl-cell--12-col.mdl-shadow--4dp.chart-card
     %p.mdl-color-text--grey Cashflow
@@ -25,7 +50,6 @@
         ], prefix: '$', thousands: ","                                                        |
 
       /= area_chart current_user.expenses.group_by_week(:date).sum(:amount), prefix: "$", thousands: ","
-
 
 .mdl-grid
   .mdl-card.mdl-cell.mdl-cell--6-col.mdl-shadow--4dp.chart-card

@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
     @sum_of_expenses = @expenses.sum(:amount)
     @sum_of_invoices = @invoices.sum(:amount)
     @net_income = @sum_of_invoices - @sum_of_expenses
+    @properties = current_user.properties
 
     @grouped_expenses = current_user.expenses.group_by_month(:date).sum(:amount)
     @grouped_invoices = current_user.invoices.group_by_month(:date).sum(:amount)
