@@ -1,10 +1,9 @@
-.mdl-grid
-  .select-container
-    .select
-      = collection_select(:post, :property_id, @properties, :id, :address, {:include_blank => "All Properties"}, { class: "select-text", id: 'snapshot-select' })
-      %span.select-highlight
-      %span.select-bar
-      %label.select-label Property
+#snapshot-select-container
+  .select
+    = collection_select(:post, :property_id, @properties, :id, :address, {:include_blank => "All Properties"}, { class: "select-text", id: 'snapshot-select' })
+    %span.select-highlight
+    %span.select-bar
+    %label.select-label Property
 
 .mdl-grid.property_snapshot#all_properties
   .mdl-card.mdl-cell.mdl-cell--4-col.mdl-shadow--4dp.chart-card
