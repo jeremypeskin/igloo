@@ -33,7 +33,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.user_id = @user.id
-    @expense.property_id = @expense.property_id.presence || @expense.unit.property_id
+    set_property_id(@expense)
 
     respond_to do |format|
       if @expense.save
@@ -49,8 +49,10 @@ class ExpensesController < ApplicationController
   # PATCH/PUT /expenses/1
   # PATCH/PUT /expenses/1.json
   def update
+
     respond_to do |format|
       if @expense.update(expense_params)
+        set_property_id(@expense)
         format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
         format.json { render :show, status: :ok, location: @expense }
       else
@@ -83,5 +85,10 @@ class ExpensesController < ApplicationController
 
     def find_user
       @user = current_user
+    end
+
+    def set_property_id(expense)
+      property_id = expense.property_id.presence || expense.unit.property_id
+      expense.update(property_id: property_id)
     end
 end

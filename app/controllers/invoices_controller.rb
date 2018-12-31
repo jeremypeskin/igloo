@@ -30,7 +30,7 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
     @invoice.user_id = @user.id
-    @invoice.property_id = @invoice.property_id.presence || @invoice.unit.property_id
+    set_property_id(@invoice)
 
     respond_to do |format|
       if @invoice.save
@@ -46,7 +46,7 @@ class InvoicesController < ApplicationController
   # PATCH/PUT /invoices/1
   # PATCH/PUT /invoices/1.json
   def update
-    @invoice.property_id = @invoice.property_id.presence || @invoice.unit.property_id
+    set_property_id(@invoice)
     respond_to do |format|
       if @invoice.update(invoice_params)
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
@@ -86,5 +86,10 @@ class InvoicesController < ApplicationController
 
     def find_user
       @user = current_user
+    end
+
+    def set_property_id(invoice)
+      property_id = invoice.property_id.presence || invoice.unit.property_id
+      invoice.update(property_id: property_id)
     end
 end
