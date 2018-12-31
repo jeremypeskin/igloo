@@ -28,7 +28,7 @@
               %td
                 = invoice.unit.try(:name)
               %td
-                = invoice.unit.try(:property).try(:address)
+                = invoice.try(:property).try(:address)
               %td
                 = link_to '<i class="material-icons">edit</i>'.html_safe, edit_invoice_path(invoice), :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
                 = link_to '<i class="material-icons">delete</i>'.html_safe, invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
