@@ -6,7 +6,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = @user.invoices
+    @invoices = @user.invoices.order(date: :desc)
   end
 
   # GET /invoices/1
