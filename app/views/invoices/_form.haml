@@ -27,7 +27,7 @@
       %label.select-label Status
   .select-container
     .select
-      = f.collection_select(:unit_id, @units, :id, :name, {:include_blank => false}, { class: "select-text" })
+      = f.collection_select(:unit_id, @units, :id, :name, {:include_blank => "Select a property"}, { class: "select-text" })
       %span.select-highlight
       %span.select-bar
       %label.select-label Unit
