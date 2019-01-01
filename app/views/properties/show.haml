@@ -5,7 +5,7 @@
         = @property.address
       %p
         %strong Price:
-        = @property.price
+        = currency(@property.price)
     .mdl-card__actions
       = link_to 'Edit', edit_property_path(@property), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
       = link_to 'Back', properties_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"

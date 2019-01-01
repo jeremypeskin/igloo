@@ -7,7 +7,7 @@
         = @unit.property.address
       %p
         %strong Rent:
-        = @unit.rent
+        = currency(@unit.rent)
     .mdl-card__actions
       = link_to 'Edit', edit_unit_path(@unit), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
       = link_to 'Back', units_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
