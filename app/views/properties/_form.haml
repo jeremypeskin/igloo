@@ -12,6 +12,23 @@
     = f.text_field :address, :class=>"mdl-textfield__input", required:true, autofocus: true
   .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
     = f.label :price, :class=>"mdl-textfield__label"
-    = f.text_field :price, :class=>"mdl-textfield__input"
+    = f.number_field :price, :class=>"mdl-textfield__input"
+
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label "Mortgage interest", :class=>"mdl-textfield__label"
+    = f.number_field :mortgage_interest, :class=>"mdl-textfield__input", step: :any
+
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :mortgage_term, :class=>"mdl-textfield__label"
+    = f.number_field :mortgage_term, :class=>"mdl-textfield__input"
+
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label :mortgage_principal, :class=>"mdl-textfield__label"
+    = f.number_field :mortgage_principal, :class=>"mdl-textfield__input"
+
+  .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+    = f.label "Mortgage Start Date (mm/dd/yyyy)", :class=>"mdl-textfield__label"
+    = f.text_field :mortgage_start_date, :class=>"mdl-textfield__input"
+
   .actions
     = f.submit :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"

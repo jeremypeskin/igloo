@@ -6,6 +6,19 @@
       %p
         %strong Price:
         = currency(@property.price)
+      %p
+        %strong Mortgage Term:
+        = @property.mortgage_term
+        years
+      %p
+        %strong Mortgage Interest
+        = @property.mortgage_interest
+      %p
+        %strong Mortgage principal
+        = currency(@property.mortgage_principal)
+      %p
+        %strong Mortgage start date
+        = @property.mortgage_start_date
     .mdl-card__actions
       = link_to 'Edit', edit_property_path(@property), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
       = link_to 'Back', properties_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
