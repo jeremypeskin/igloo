@@ -17,4 +17,4 @@
         = @expense.unit.try(:name)
     .mdl-card__actions
       = link_to 'Edit', edit_expense_path(@expense), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
-      = link_to 'Back', expenses_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+      = link_to 'Back', :back, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"

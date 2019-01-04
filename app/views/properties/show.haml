@@ -21,7 +21,7 @@
         = @property.mortgage_start_date
     .mdl-card__actions
       = link_to 'Edit', edit_property_path(@property), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
-      = link_to 'Back', properties_path, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
+      = link_to 'Back', :back, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
 .cards-container
   - @property.units.each do |unit|
     .demo-card-event.mdl-card.mdl-shadow--2dp.mdl-color--white

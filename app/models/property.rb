@@ -35,7 +35,7 @@ class Property < ActiveRecord::Base
 
   def date_months
     first_payment = 1.month.since(mortgage_start_date)
-    last_payment = mortgage_start_date + 15.years
+    last_payment = mortgage_start_date + mortgage_term.years
     date_range = first_payment..last_payment
     date_months = date_range.map {|d| Date.new(d.year, d.month, 1) }.uniq
     date_months.map {|d| d.strftime "%m/%Y" }

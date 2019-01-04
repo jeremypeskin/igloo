@@ -63,14 +63,15 @@
       = pie_chart @invoices.joins(:property).group("properties.address").sum(:amount), prefix: '$', thousands: ","
 
 - current_user.properties.each do |property|
-  .mdl-grid
-    .mdl-card.mdl-cell.mdl-cell--12-col.mdl-shadow--4dp.chart-card
-      %p.mdl-color-text--grey
-        Mortgage Payments -
-        = property.address
-      .chart
-        = line_chart [                                                        |
-            {name: "Interest Payments", data: property.interest_payments},    |
-            {name: "Principal Payments", data: property.principal_payments},  |
-            {name: "Total Payments", data: property.total_payments}           |
-          ], prefix: '$', thousands: ",", points: false                       |
+  - if property.mortgage_term.present? & property.mortgage_principal.present? & property.mortgage_interest.present?
+    .mdl-grid
+      .mdl-card.mdl-cell.mdl-cell--12-col.mdl-shadow--4dp.chart-card
+        %p.mdl-color-text--grey
+          Mortgage Payments -
+          = link_to property.address, property_path(property)
+        .chart
+          = line_chart [                                                        |
+              {name: "Interest Payments", data: property.interest_payments},    |
+              {name: "Principal Payments", data: property.principal_payments},  |
+              {name: "Total Payments", data: property.total_payments}           |
+            ], prefix: '$', thousands: ",", points: false                       |
