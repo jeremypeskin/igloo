@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: [:show, :edit, :update, :destroy, :add_mortgage_payments_to]
   before_action :authenticate_user!
   before_action :find_user
 
@@ -62,6 +62,21 @@ class PropertiesController < ApplicationController
       format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def add_mortgage_payments_to
+    date = Date.today
+    @property.interest_payments.each do |key, value|
+      if key < date
+        @property.expenses.create(user_id: current_user.id, property_id: @property.id, amount:value, description:'Mortgage Interest Payment', date: key, expense_type: 1, category: 1)
+      end
+    end
+    @property.principal_payments.each do |key, value|
+      if key < date
+        @property.expenses.create(user_id: current_user.id, property_id: @property.id, amount:value, description:'Mortgage Principal Payment', date: key, expense_type: 1, category: 1)
+      end
+    end
+    redirect_to property_path
   end
 
   private

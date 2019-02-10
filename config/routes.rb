@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   end
   resources :expenses
   resources :units
-  resources :properties
+  resources :properties do
+    member do
+      post :add_mortgage_payments_to
+    end
+  end
   resources :dashboard, only: [:index]
   devise_for :users
   get 'welcome/index'

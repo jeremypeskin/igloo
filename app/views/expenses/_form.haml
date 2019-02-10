@@ -18,6 +18,13 @@
   .field.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
     = f.text_field :date, :type=>"date", :value => Time.now.strftime('%Y-%m-%d'), :class=>"mdl-textfield__input"
   %br/
+  .select-container
+    .select
+      = f.collection_select(:category, Expense.categories.map { |s| [s.first, s.first] }, :first, :second, {:include_blank => false}, { class: "select-text" })
+      %span.select-highlight
+      %span.select-bar
+      %label.select-label Category
+  %br/
   .select-container.unit-event
     .select
       = f.collection_select(:unit_id, @units, :id, :name, {:include_blank => "Select a unit"}, { class: "select-text" })
@@ -36,5 +43,6 @@
   %label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect.mb-50{:for => "assign-to-property"}
     = f.radio_button( :expense_type, 'Property', options={id:"assign-to-property", class:"mdl-radio__button event-type-radio"})
     %span.mdl-radio__label Assign to Property
+
   .actions
     = f.submit :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"

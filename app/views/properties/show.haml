@@ -19,6 +19,8 @@
       %p
         %strong Mortgage start date
         = @property.mortgage_start_date
+
+      = link_to 'Add historical mortgage payments to expenses', add_mortgage_payments_to_property_path(@property), method: :post, confirm: 'This will create expenses for each mortgage and principal payment between the mortgage start date and today.  Are you sure you want to proceed?'
     .mdl-card__actions
       = link_to 'Edit', edit_property_path(@property), :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
       = link_to 'Back', :back, :class=>"mdl-button mdl-js-button mdl-js-ripple-effect"
