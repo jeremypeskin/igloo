@@ -86,7 +86,7 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-      params.require(:property).permit(:address, :price, :mortgage_term, :mortgage_interest, :mortgage_principal, :mortgage_start_date)
+      params.require(:property).permit(:address, :price, :mortgage_term, :mortgage_interest, :mortgage_principal, :mortgage_start_date, :recurring_mortgage)
     end
 
     def find_user
