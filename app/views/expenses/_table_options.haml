@@ -1,0 +1,17 @@
+%button#category-filter.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent.mdl-js-ripple-effect{:href => "javascript:void(0)"}
+  Category
+  %span ▼
+%ul.mdl-menu.mdl-js-menu.mdl-js-ripple-effect{:for => "category-filter"}
+  = link_to 'All', {:category => "", :property => params[:property]}, {:class=> 'mdl-menu__item'}
+  = link_to 'Operating', {:category => "0", :property => params[:property]}, {:class=> 'mdl-menu__item'}
+  = link_to 'Interest', {:category => "1", :property => params[:property]}, {:class=> 'mdl-menu__item'}
+  = link_to 'Principal', {:category => "2", :property => params[:property]}, {:class=> 'mdl-menu__item'}
+  = link_to 'Other', {:category => "3", :property => params[:property]}, {:class=> 'mdl-menu__item'}
+
+%button#property-filter.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent.mdl-js-ripple-effect{:href => "javascript:void(0)"}
+  Property
+  %span ▼
+%ul.mdl-menu.mdl-js-menu.mdl-js-ripple-effect{:for => "property-filter"}
+  = link_to 'All', {:property => "", :other_param => params[:category]}, {:class=> 'mdl-menu__item'}
+  - @user.properties.each do |property|
+    = link_to property.address, {:property => "#{property.id}", :category => params[:category]}, {:class=> 'mdl-menu__item'}

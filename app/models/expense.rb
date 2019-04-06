@@ -9,4 +9,5 @@ class Expense < ActiveRecord::Base
   include Filterable
 
   scope :category, -> (category) { where category: category }
+  scope :property, -> (property_id) { where property_id: property_id }
 end
