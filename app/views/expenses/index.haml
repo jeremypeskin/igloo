@@ -5,6 +5,7 @@
         %tr
           %th.mdl-data-table__cell--non-numeric Expense
           %th Amount
+          %th Category
           %th Date
           %th Unit
           %th Property
@@ -15,6 +16,8 @@
             %td.mdl-data-table__cell--non-numeric= expense.description
             %td
               = currency(expense.amount)
+            %td
+              = expense.category
             %td
               = expense.date
             %td
