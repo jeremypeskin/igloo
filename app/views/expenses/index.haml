@@ -1,4 +1,15 @@
 .cards-container
+
+  %button#category-filter.mdl-button.mdl-js-button.mdl-button--raised{:href => "javascript:void(0)"}
+    CATEGORY
+    %span ▼
+  %ul.mdl-menu.mdl-js-menu.mdl-js-ripple-effect{:for => "category-filter"}
+    = link_to 'All', {:category => ""}, {:class=> 'mdl-menu__item'}
+    = link_to 'Operating', {:category => "0"}, {:class=> 'mdl-menu__item'}
+    = link_to 'Interest', {:category => "1"}, {:class=> 'mdl-menu__item'}
+    = link_to 'Principal', {:category => "2"}, {:class=> 'mdl-menu__item'}
+    = link_to 'Other', {:category => "3"}, {:class=> 'mdl-menu__item'}
+
   - if @expenses.exists?
     %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.full-width
       %thead
