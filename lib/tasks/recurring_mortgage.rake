@@ -13,7 +13,7 @@ namespace :db do
         end
         property.principal_payments.each do |key, value|
           if key == date
-            property.expenses.create(user_id: property.user.id, property_id: property.id, amount:value, description:'Mortgage Principal Payment', date: key, expense_type: 1, category: 1)
+            property.expenses.create(user_id: property.user.id, property_id: property.id, amount:value, description:'Mortgage Principal Payment', date: key, expense_type: 1, category: 2)
           end
         end
       end
