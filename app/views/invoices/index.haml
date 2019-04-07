@@ -1,6 +1,9 @@
 .cards-container
+  =render 'table_options'
+
   - if @invoices.exists?
     = form_tag pay_invoices_path, :method => :put do
+      = submit_tag "Mark as paid", :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect", :id=>"mark_paid_button"
       %table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.full-width
         %thead
           %tr
@@ -34,7 +37,9 @@
                 = link_to '<i class="material-icons">delete</i>'.html_safe, invoice, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab xs"
         %tfoot
           %tr
-            %td{:colspan => "8"}
-              = submit_tag "Mark as paid", :class=>"mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+            %td
+            %td.mdl-data-table__cell--non-numeric.bold TOTAL
+            %td.bold
+              = currency(@sum_of_invoices)
   - else
     = render "shared_partials/placeholder"

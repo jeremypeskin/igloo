@@ -8,7 +8,6 @@ class ExpensesController < ApplicationController
   def index
     @expenses = @user.expenses.order(date: :desc).filter(params.slice(:category, :property))
     @sum_of_expenses = @user.expenses.filter(params.slice(:category, :property)).sum(:amount)
-    @category_options = [0, 1, 2, 3]
   end
 
   # GET /expenses/1

@@ -12,6 +12,10 @@ input[type="date"]:valid:before {
   content: "";
 }
 
+.pull-right {
+  float: right;
+}
+
 .chart-card {
   padding: 15px;
 }
@@ -82,6 +86,10 @@ input[type="date"]:valid:before {
 
 .mb-50 {
   margin-bottom: 50px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
 }
 
 @mixin resource_card($resource) {
@@ -229,4 +237,10 @@ input[type="date"]:valid:before {
 	left: 0;
 	pointer-events: none;
 	opacity: 0.5;
+}
+
+#mark_paid_button {
+  position: absolute;
+  top: 20px;
+  right: 0px;
 }

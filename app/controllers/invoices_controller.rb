@@ -6,7 +6,8 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = @user.invoices.order(date: :desc)
+    @invoices = @user.invoices.order(date: :desc).filter(params.slice(:property))
+    @sum_of_invoices = @user.invoices.filter(params.slice(:property)).sum(:amount)
   end
 
   # GET /invoices/1
@@ -69,7 +70,7 @@ class InvoicesController < ApplicationController
   end
 
   def pay
-    Invoice.where(id: params[:invoice_ids]).update_all(status: 1)
+    Invoice.where(id: params[:invoice_ids]).update_all(status: 1, date: Date.today)
     redirect_to invoices_url
   end
 

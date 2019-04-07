@@ -1,0 +1,7 @@
+%button#property-filter.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent.mdl-js-ripple-effect.mb-10{:href => "javascript:void(0)"}
+  Property
+  %span ▼
+%ul.mdl-menu.mdl-js-menu.mdl-js-ripple-effect{:for => "property-filter"}
+  = link_to 'All', {:property => ""}, {:class=> 'mdl-menu__item'}
+  - @user.properties.each do |property|
+    = link_to property.address, {:property => "#{property.id}"}, {:class=> 'mdl-menu__item'}
