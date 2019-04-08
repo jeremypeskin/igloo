@@ -41,5 +41,7 @@
             %td.mdl-data-table__cell--non-numeric.bold TOTAL
             %td.bold
               = currency(@sum_of_invoices)
+    .digg_pagination
+      = will_paginate @expenses
   - else
     = render "shared_partials/placeholder"

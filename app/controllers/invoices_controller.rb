@@ -6,7 +6,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = @user.invoices.order(date: :desc).filter(params.slice(:property))
+    @invoices = @user.invoices.order(date: :desc).filter(params.slice(:property)).paginate(page: params[:page], per_page: 5)
     @sum_of_invoices = @user.invoices.filter(params.slice(:property)).sum(:amount)
   end
 

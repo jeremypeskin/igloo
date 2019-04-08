@@ -6,7 +6,8 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = @user.expenses.order(date: :desc).filter(params.slice(:category, :property))
+    @expenses = @user.expenses.order(date: :desc).filter(params.slice(:category, :property)).paginate(page: params[:page], per_page: 5)
+    #@expenses = Expense.paginate(page: params[:page])
     @sum_of_expenses = @user.expenses.filter(params.slice(:category, :property)).sum(:amount)
   end
 
